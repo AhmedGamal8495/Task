@@ -1,0 +1,137 @@
+﻿@using Task.Models
+@model NwcInvoice
+
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<h1>Delete</h1>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>NwcInvoice</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.NwcInvoicesYear)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.NwcInvoicesYear)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.NwcInvoicesDate)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.NwcInvoicesDate)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.NwcInvoicesFrom)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.NwcInvoicesFrom)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.NwcInvoicesTo)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.NwcInvoicesTo)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.NwcInvoicesPreviousConsumptionAmount)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.NwcInvoicesPreviousConsumptionAmount)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.NwcInvoicesCurrentConsumptionAmount)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.NwcInvoicesCurrentConsumptionAmount)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.NwcInvoicesAmountConsumption)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.NwcInvoicesAmountConsumption)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.NwcInvoicesServiceFee)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.NwcInvoicesServiceFee)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.NwcInvoicesTaxRate)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.NwcInvoicesTaxRate)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.NwcInvoicesIsThereSanitation)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.NwcInvoicesIsThereSanitation)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.NwcInvoicesConsumptionValue)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.NwcInvoicesConsumptionValue)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.NwcInvoicesWastewaterConsumptionValue)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.NwcInvoicesWastewaterConsumptionValue)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.NwcInvoicesTotalInvoice)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.NwcInvoicesTotalInvoice)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.NwcInvoicesTaxValue)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.NwcInvoicesTaxValue)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.NwcInvoicesTotalBill)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.NwcInvoicesTotalBill)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.NwcInvoicesTotalReasons)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.NwcInvoicesTotalReasons)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.NwcInvoicesRrealEstateTypesNavigation)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.NwcInvoicesRrealEstateTypesNavigation.NwcRrealEstateTypesCode)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.NwcInvoicesSubscriberNoNavigation)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.NwcInvoicesSubscriberNoNavigation.NwcSubscriberFileId)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.NwcInvoicesSubscriptionNoNavigation)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.NwcInvoicesSubscriptionNoNavigation.NwcSubscriptionFileNo)
+        </dd>
+    </dl>
+    
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="NwcInvoicesNo" />
+        <input type="submit" value="Delete" class="btn btn-danger" /> |
+        <a asp-action="Index">Back to List</a>
+    </form>
+</div>

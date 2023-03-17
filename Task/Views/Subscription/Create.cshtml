@@ -1,0 +1,59 @@
+﻿@using Task.Models
+@model NwcSubscriptionFile
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+
+<h4>NwcSubscriptionFile</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="NwcSubscriptionFileNo" class="control-label"></label>
+                <input asp-for="NwcSubscriptionFileNo" class="form-control" />
+                <span asp-validation-for="NwcSubscriptionFileNo" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="NwcSubscriptionFileSubscriberCode" class="control-label"></label>
+                <select asp-for="NwcSubscriptionFileSubscriberCode" class ="form-control" asp-items="ViewBag.NwcSubscriptionFileSubscriberCode"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="NwcSubscriptionFileRrealEstateTypesCode" class="control-label"></label>
+                <select asp-for="NwcSubscriptionFileRrealEstateTypesCode" class ="form-control" asp-items="ViewBag.NwcSubscriptionFileRrealEstateTypesCode"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="NwcSubscriptionFileUnitNo" class="control-label"></label>
+                <input asp-for="NwcSubscriptionFileUnitNo" class="form-control" />
+                <span asp-validation-for="NwcSubscriptionFileUnitNo" class="text-danger"></span>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="NwcSubscriptionFileIsThereSanitation" /> @Html.DisplayNameFor(model => model.NwcSubscriptionFileIsThereSanitation)
+                </label>
+            </div>
+            <div class="form-group">
+                <label asp-for="NwcSubscriptionFileLastReadingMeter" class="control-label"></label>
+                <input asp-for="NwcSubscriptionFileLastReadingMeter" class="form-control" />
+                <span asp-validation-for="NwcSubscriptionFileLastReadingMeter" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="NwcSubscriptionFileReasons" class="control-label"></label>
+                <input asp-for="NwcSubscriptionFileReasons" class="form-control" />
+                <span asp-validation-for="NwcSubscriptionFileReasons" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+

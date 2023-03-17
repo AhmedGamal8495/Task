@@ -1,0 +1,57 @@
+﻿@using Task.Models
+@model NwcSubscriberFile
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<h4>NwcSubscriberFile</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="NwcSubscriberFileId" />
+            <div class="form-group">
+                <label asp-for="NwcSubscriberFileId" class="control-label"></label>
+                <input asp-for="NwcSubscriberFileId" class="form-control" />
+                <span asp-validation-for="NwcSubscriberFileId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="NwcSubscriberFileName" class="control-label"></label>
+                <input asp-for="NwcSubscriberFileName" class="form-control" />
+                <span asp-validation-for="NwcSubscriberFileName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="NwcSubscriberFileCity" class="control-label"></label>
+                <input asp-for="NwcSubscriberFileCity" class="form-control" />
+                <span asp-validation-for="NwcSubscriberFileCity" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="NwcSubscriberFileArea" class="control-label"></label>
+                <input asp-for="NwcSubscriberFileArea" class="form-control" />
+                <span asp-validation-for="NwcSubscriberFileArea" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="NwcSubscriberFileMobile" class="control-label"></label>
+                <input asp-for="NwcSubscriberFileMobile" class="form-control" />
+                <span asp-validation-for="NwcSubscriberFileMobile" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="NwcSubscriberFileReasons" class="control-label"></label>
+                <input asp-for="NwcSubscriberFileReasons" class="form-control" />
+                <span asp-validation-for="NwcSubscriberFileReasons" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+

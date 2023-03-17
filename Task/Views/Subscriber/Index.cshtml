@@ -1,0 +1,67 @@
+﻿@using Task.Models
+@model IEnumerable<NwcSubscriberFile>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.NwcSubscriberFileId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NwcSubscriberFileName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NwcSubscriberFileCity)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NwcSubscriberFileArea)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NwcSubscriberFileMobile)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NwcSubscriberFileReasons)
+            </th>
+            
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NwcSubscriberFileId)
+                </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NwcSubscriberFileName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NwcSubscriberFileCity)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NwcSubscriberFileArea)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NwcSubscriberFileMobile)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NwcSubscriberFileReasons)
+            </td>
+                
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.NwcSubscriberFileId">Edit</a> |
+                <a asp-action="Delete" asp-route-id="@item.NwcSubscriberFileId">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

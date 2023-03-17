@@ -1,0 +1,144 @@
+﻿@using Task.Models
+@model IEnumerable<NwcInvoice>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.NwcInvoicesYear)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NwcInvoicesDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NwcInvoicesFrom)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NwcInvoicesTo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NwcInvoicesPreviousConsumptionAmount)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NwcInvoicesCurrentConsumptionAmount)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NwcInvoicesAmountConsumption)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NwcInvoicesServiceFee)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NwcInvoicesTaxRate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NwcInvoicesIsThereSanitation)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NwcInvoicesConsumptionValue)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NwcInvoicesWastewaterConsumptionValue)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NwcInvoicesTotalInvoice)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NwcInvoicesTaxValue)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NwcInvoicesTotalBill)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NwcInvoicesTotalReasons)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NwcInvoicesRrealEstateTypesNavigation)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NwcInvoicesSubscriberNoNavigation)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NwcInvoicesSubscriptionNoNavigation)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.NwcInvoicesYear)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NwcInvoicesDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NwcInvoicesFrom)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NwcInvoicesTo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NwcInvoicesPreviousConsumptionAmount)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NwcInvoicesCurrentConsumptionAmount)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NwcInvoicesAmountConsumption)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NwcInvoicesServiceFee)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NwcInvoicesTaxRate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NwcInvoicesIsThereSanitation)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NwcInvoicesConsumptionValue)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NwcInvoicesWastewaterConsumptionValue)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NwcInvoicesTotalInvoice)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NwcInvoicesTaxValue)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NwcInvoicesTotalBill)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NwcInvoicesTotalReasons)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NwcInvoicesRrealEstateTypesNavigation.NwcRrealEstateTypesCode)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NwcInvoicesSubscriberNoNavigation.NwcSubscriberFileId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NwcInvoicesSubscriptionNoNavigation.NwcSubscriptionFileNo)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.NwcInvoicesNo">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.NwcInvoicesNo">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.NwcInvoicesNo">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
