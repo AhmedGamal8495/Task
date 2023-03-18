@@ -18,14 +18,14 @@ namespace Task.Controllers
             _context = context;
         }
 
-        // GET: Invoices
+        
         public async Task<IActionResult> Index()
         {
             var nwcContext = _context.NwcInvoices.Include(n => n.NwcInvoicesRrealEstateTypesNavigation).Include(n => n.NwcInvoicesSubscriberNoNavigation).Include(n => n.NwcInvoicesSubscriptionNoNavigation);
             return View(await nwcContext.ToListAsync());
         }
 
-        // GET: Invoices/Details/5
+        
         public async Task<IActionResult> Details(string id)
         {
             if (id == null || _context.NwcInvoices == null)
@@ -46,7 +46,7 @@ namespace Task.Controllers
             return View(nwcInvoice);
         }
 
-        // GET: Invoices/Create
+        
         public IActionResult Create()
         {
             ViewData["NwcInvoicesRrealEstateTypes"] = new SelectList(_context.NwcRrealEstateTypes, "NwcRrealEstateTypesCode", "NwcRrealEstateTypesCode");
@@ -56,18 +56,18 @@ namespace Task.Controllers
             return View();
         }
 
-        // POST: Invoices/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+        
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("NwcInvoicesNo,NwcInvoicesYear,NwcInvoicesRrealEstateTypes,NwcInvoicesSubscriptionNo,NwcInvoicesSubscriberNo,NwcInvoicesDate,NwcInvoicesFrom,NwcInvoicesTo,NwcInvoicesPreviousConsumptionAmount,NwcInvoicesCurrentConsumptionAmount,NwcInvoicesAmountConsumption,NwcInvoicesServiceFee,NwcInvoicesTaxRate,NwcInvoicesIsThereSanitation,NwcInvoicesConsumptionValue,NwcInvoicesWastewaterConsumptionValue,NwcInvoicesTotalInvoice,NwcInvoicesTaxValue,NwcInvoicesTotalBill,NwcInvoicesTotalReasons")] NwcInvoice nwcInvoice)
         {
 
             nwcInvoice.NwcInvoicesTo = DateTime.Now;
-            nwcInvoice.NwcInvoicesAmountConsumption = nwcInvoice.NwcInvoicesCurrentConsumptionAmount - nwcInvoice.NwcInvoicesPreviousConsumptionAmount;
-            //nwcInvoice.NwcInvoicesSubscriberNo = nwcInvoice.NwcInvoicesSubscriptionNoNavigation.NwcSubscriptionFileSubscriberCode;
-            nwcInvoice.NwcInvoicesPreviousConsumptionAmount = nwcInvoice.NwcInvoicesSubscriptionNoNavigation.NwcSubscriptionFileLastReadingMeter;
+            nwcInvoice.NwcInvoicesYear = DateTime.Now.ToString("yyy");
+
+            //nwcInvoice.NwcInvoicesPreviousConsumptionAmount = await _context.NwcSubscriptionFiles.FindAsync(nwcInvoice.NwcInvoicesSubscriptionNoNavigation.NwcSubscriptionFileLastReadingMeter);
+            //nwcInvoice.NwcInvoicesAmountConsumption = nwcInvoice.NwcInvoicesCurrentConsumptionAmount - nwcInvoice.NwcInvoicesPreviousConsumptionAmount;
+            //nwcInvoice.NwcInvoicesSubscriberNo = nwcInvoice.NwcInvoicesSubscriptionNoNavigation.NwcSubscriptionFileSubscriberCode.ToString();
 
             if (nwcInvoice.NwcInvoicesAmountConsumption < 16)
             {
@@ -148,7 +148,7 @@ namespace Task.Controllers
             return View(nwcInvoice);
         }
 
-        // GET: Invoices/Edit/5
+        
         public async Task<IActionResult> Edit(string id)
         {
             if (id == null || _context.NwcInvoices == null)
@@ -167,9 +167,7 @@ namespace Task.Controllers
             return View(nwcInvoice);
         }
 
-        // POST: Invoices/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+        
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(string id, [Bind("NwcInvoicesNo,NwcInvoicesYear,NwcInvoicesRrealEstateTypes,NwcInvoicesSubscriptionNo,NwcInvoicesSubscriberNo,NwcInvoicesDate,NwcInvoicesFrom,NwcInvoicesTo,NwcInvoicesPreviousConsumptionAmount,NwcInvoicesCurrentConsumptionAmount,NwcInvoicesAmountConsumption,NwcInvoicesServiceFee,NwcInvoicesTaxRate,NwcInvoicesIsThereSanitation,NwcInvoicesConsumptionValue,NwcInvoicesWastewaterConsumptionValue,NwcInvoicesTotalInvoice,NwcInvoicesTaxValue,NwcInvoicesTotalBill,NwcInvoicesTotalReasons")] NwcInvoice nwcInvoice)
@@ -205,7 +203,7 @@ namespace Task.Controllers
             return View(nwcInvoice);
         }
 
-        // GET: Invoices/Delete/5
+        
         public async Task<IActionResult> Delete(string id)
         {
             if (id == null || _context.NwcInvoices == null)
@@ -226,7 +224,7 @@ namespace Task.Controllers
             return View(nwcInvoice);
         }
 
-        // POST: Invoices/Delete/5
+        
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(string id)
