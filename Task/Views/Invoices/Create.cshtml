@@ -15,7 +15,7 @@
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
                 <label asp-for="NwcInvoicesNo" class="control-label">رقم الفاتوره</label>
-                <input asp-for="NwcInvoicesNo" class="form-control" />
+                <input asp-for="NwcInvoicesNo" maxlength="10" min="10" class="form-control" />
                 <span asp-validation-for="NwcInvoicesNo" class="text-danger"></span>
             </div>
             <div class="form-group">
@@ -33,22 +33,17 @@
                 <input asp-for="NwcInvoicesTo" class="form-control" />
                 <span asp-validation-for="NwcInvoicesTo" class="text-danger"></span>
             </div>
-
-
-
             <div class="form-group">
                 <label asp-for="NwcInvoicesSubscriptionNo" class="control-label"> رقم الاشتراك</label>
                 <select asp-for="NwcInvoicesSubscriptionNo" class ="form-control" asp-items="ViewBag.NwcInvoicesSubscriptionNo"></select>
             </div>
             <div class="form-group">
                 <label asp-for="NwcInvoicesSubscriberNo" class="control-label">هوية المشترك</label>
-                <select asp-for="NwcInvoicesSubscriberNo" class ="form-control" asp-items="ViewBag.NwcInvoicesSubscriberNo"></select>
+                <select asp-for="NwcInvoicesSubscriberNo" class="form-control" asp-items="ViewBag.NwcInvoicesSubscriberNo"></select>
             </div>
-            <div class="form-group">
-                <label asp-for="NwcInvoicesTotalInvoice" class="control-label">اسم المشترك</label>
-                <input asp-for="NwcInvoicesTotalInvoice" class="form-control" />
-                <span asp-validation-for="NwcInvoicesTotalInvoice" class="text-danger"></span>
-            </div>
+ 
+
+
             <div class="form-group">
                 <label asp-for="NwcInvoicesPreviousConsumptionAmount" class="control-label">القراة السابقه</label>
                 <input asp-for="NwcInvoicesPreviousConsumptionAmount" class="form-control" />
@@ -64,6 +59,8 @@
                 <input asp-for="NwcInvoicesAmountConsumption" readonly="readonly" class="form-control" />
                 <span asp-validation-for="NwcInvoicesAmountConsumption" class="text-danger"></span>
             </div>
+
+
             <div class="form-group form-check">
                 <label class="form-check-label">
                     <input class="form-check-input" asp-for="NwcInvoicesIsThereSanitation" /> 

@@ -63,8 +63,11 @@ namespace Task.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("NwcInvoicesNo,NwcInvoicesYear,NwcInvoicesRrealEstateTypes,NwcInvoicesSubscriptionNo,NwcInvoicesSubscriberNo,NwcInvoicesDate,NwcInvoicesFrom,NwcInvoicesTo,NwcInvoicesPreviousConsumptionAmount,NwcInvoicesCurrentConsumptionAmount,NwcInvoicesAmountConsumption,NwcInvoicesServiceFee,NwcInvoicesTaxRate,NwcInvoicesIsThereSanitation,NwcInvoicesConsumptionValue,NwcInvoicesWastewaterConsumptionValue,NwcInvoicesTotalInvoice,NwcInvoicesTaxValue,NwcInvoicesTotalBill,NwcInvoicesTotalReasons")] NwcInvoice nwcInvoice)
         {
-            
+
+            nwcInvoice.NwcInvoicesTo = DateTime.Now;
             nwcInvoice.NwcInvoicesAmountConsumption = nwcInvoice.NwcInvoicesCurrentConsumptionAmount - nwcInvoice.NwcInvoicesPreviousConsumptionAmount;
+            //nwcInvoice.NwcInvoicesSubscriberNo = nwcInvoice.NwcInvoicesSubscriptionNoNavigation.NwcSubscriptionFileSubscriberCode;
+            nwcInvoice.NwcInvoicesPreviousConsumptionAmount = nwcInvoice.NwcInvoicesSubscriptionNoNavigation.NwcSubscriptionFileLastReadingMeter;
 
             if (nwcInvoice.NwcInvoicesAmountConsumption < 16)
             {
