@@ -4,26 +4,26 @@
     ViewData["Title"] = "Create";
 }
 
-<h1>Create</h1>
+<h1 style="margin-top:10px;">انشاء</h1>
 
-<h4>NwcRrealEstateType</h4>
+<h4>نوع عقار جديد</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
         <form asp-action="Create">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
-                <label asp-for="NwcRrealEstateTypesCode" class="control-label"></label>
+                <label asp-for="NwcRrealEstateTypesCode" class="control-label">رمز نوع العقار</label>
                 <input asp-for="NwcRrealEstateTypesCode" class="form-control" />
                 <span asp-validation-for="NwcRrealEstateTypesCode" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="NwcRrealEstateTypesName" class="control-label"></label>
+                <label asp-for="NwcRrealEstateTypesName" class="control-label">وصف نوع العقار</label>
                 <input asp-for="NwcRrealEstateTypesName" class="form-control" />
                 <span asp-validation-for="NwcRrealEstateTypesName" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="NwcRrealEstateTypesReasons" class="control-label"></label>
+                <label asp-for="NwcRrealEstateTypesReasons" class="control-label">ملاحظات</label>
                 <input asp-for="NwcRrealEstateTypesReasons" class="form-control" />
                 <span asp-validation-for="NwcRrealEstateTypesReasons" class="text-danger"></span>
             </div>
@@ -35,7 +35,7 @@
 </div>
 
 <div>
-    <a asp-action="Index">Back to List</a>
+    <a class="btn btn-secondary" asp-action="Index">Back to List</a>
 </div>
 
 @section Scripts {

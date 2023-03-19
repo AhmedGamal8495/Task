@@ -5,9 +5,9 @@
     ViewData["Title"] = "Edit";
 }
 
-<h1>Edit</h1>
+<h1 style="margin-top:10px;text-align:center;">تحديث</h1>
 
-<h4>NwcSubscriberFile</h4>
+<h4 style="margin-top:10px;text-align:center;">بيانات مشترك</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
@@ -15,33 +15,33 @@
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input type="hidden" asp-for="NwcSubscriberFileId" />
             <div class="form-group">
-                <label asp-for="NwcSubscriberFileId" class="control-label"></label>
-                <input asp-for="NwcSubscriberFileId" class="form-control" />
+                <label asp-for="NwcSubscriberFileId" class="control-label">ID</label>
+                <input readonly asp-for="NwcSubscriberFileId" class="form-control" />
                 <span asp-validation-for="NwcSubscriberFileId" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="NwcSubscriberFileName" class="control-label"></label>
+                <label asp-for="NwcSubscriberFileName" class="control-label">اسم المشترك</label>
                 <input asp-for="NwcSubscriberFileName" class="form-control" />
                 <span asp-validation-for="NwcSubscriberFileName" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="NwcSubscriberFileCity" class="control-label"></label>
+                <label asp-for="NwcSubscriberFileCity" class="control-label">المدينه</label>
                 <input asp-for="NwcSubscriberFileCity" class="form-control" />
                 <span asp-validation-for="NwcSubscriberFileCity" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="NwcSubscriberFileArea" class="control-label"></label>
+                <label asp-for="NwcSubscriberFileArea" class="control-label">المنطقه</label>
                 <input asp-for="NwcSubscriberFileArea" class="form-control" />
                 <span asp-validation-for="NwcSubscriberFileArea" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="NwcSubscriberFileMobile" class="control-label"></label>
+                <label asp-for="NwcSubscriberFileMobile" class="control-label">رقم الهاتف</label>
                 <input asp-for="NwcSubscriberFileMobile" class="form-control" />
                 <span asp-validation-for="NwcSubscriberFileMobile" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="NwcSubscriberFileReasons" class="control-label"></label>
-                <input asp-for="NwcSubscriberFileReasons" class="form-control" />
+                <label asp-for="NwcSubscriberFileReasons" class="control-label">ملاحظات</label>
+                <textarea asp-for="NwcSubscriberFileReasons" class="form-control"></textarea>
                 <span asp-validation-for="NwcSubscriberFileReasons" class="text-danger"></span>
             </div>
             <div class="form-group">
@@ -52,6 +52,6 @@
 </div>
 
 <div>
-    <a asp-action="Index">Back to List</a>
+    <a class="btn btn-primary" asp-action="Index">Back to List</a>
 </div>
 
