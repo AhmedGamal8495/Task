@@ -5,44 +5,44 @@
     ViewData["Title"] = "Create";
 }
 
-<h1>Create</h1>
+<h1 style="margin-top:10px;text-align:center;">انشاء </h1>
 
-<h4>NwcSubscriptionFile</h4>
+<h4 style="margin-top:10px;text-align:center;">اشتراك جديد</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
         <form asp-action="Create">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
-                <label asp-for="NwcSubscriptionFileNo" class="control-label"></label>
-                <input asp-for="NwcSubscriptionFileNo" class="form-control" />
+                <label asp-for="NwcSubscriptionFileNo" class="control-label">ID</label>
+                <input asp-for="NwcSubscriptionFileNo" maxlength="10" min="10" class="form-control" />
                 <span asp-validation-for="NwcSubscriptionFileNo" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="NwcSubscriptionFileSubscriberCode" class="control-label"></label>
+                <label asp-for="NwcSubscriptionFileSubscriberCode" class="control-label">رقم هوية المشترك</label>
                 <select asp-for="NwcSubscriptionFileSubscriberCode" class ="form-control" asp-items="ViewBag.NwcSubscriptionFileSubscriberCode"></select>
             </div>
             <div class="form-group">
-                <label asp-for="NwcSubscriptionFileRrealEstateTypesCode" class="control-label"></label>
+                <label asp-for="NwcSubscriptionFileRrealEstateTypesCode" class="control-label">نوع العقار</label>
                 <select asp-for="NwcSubscriptionFileRrealEstateTypesCode" class ="form-control" asp-items="ViewBag.NwcSubscriptionFileRrealEstateTypesCode"></select>
             </div>
             <div class="form-group">
-                <label asp-for="NwcSubscriptionFileUnitNo" class="control-label"></label>
+                <label asp-for="NwcSubscriptionFileUnitNo" class="control-label">عدد الوحدات</label>
                 <input asp-for="NwcSubscriptionFileUnitNo" class="form-control" />
                 <span asp-validation-for="NwcSubscriptionFileUnitNo" class="text-danger"></span>
             </div>
             <div class="form-group form-check">
                 <label class="form-check-label">
-                    <input class="form-check-input" asp-for="NwcSubscriptionFileIsThereSanitation" /> @Html.DisplayNameFor(model => model.NwcSubscriptionFileIsThereSanitation)
+                    <input class="form-check-input" asp-for="NwcSubscriptionFileIsThereSanitation" /> هل يوجد صرف صحي
                 </label>
             </div>
             <div class="form-group">
-                <label asp-for="NwcSubscriptionFileLastReadingMeter" class="control-label"></label>
+                <label asp-for="NwcSubscriptionFileLastReadingMeter" class="control-label">اخر قراءة للعداد</label>
                 <input asp-for="NwcSubscriptionFileLastReadingMeter" class="form-control" />
                 <span asp-validation-for="NwcSubscriptionFileLastReadingMeter" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="NwcSubscriptionFileReasons" class="control-label"></label>
+                <label asp-for="NwcSubscriptionFileReasons" class="control-label">ملاحظات</label>
                 <input asp-for="NwcSubscriptionFileReasons" class="form-control" />
                 <span asp-validation-for="NwcSubscriptionFileReasons" class="text-danger"></span>
             </div>
@@ -54,6 +54,6 @@
 </div>
 
 <div>
-    <a asp-action="Index">Back to List</a>
+    <a class="btn btn-primary" asp-action="Index">Back to List</a>
 </div>
 

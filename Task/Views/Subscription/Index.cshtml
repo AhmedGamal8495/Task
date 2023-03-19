@@ -5,68 +5,69 @@
     ViewData["Title"] = "Index";
 }
 
-<h1>Index</h1>
+<h1 style="margin-top:10px;"></h1>
 
 <p>
-    <a asp-action="Create">Create New</a>
+    <a class="btn btn-primary" asp-action="Create">Create New</a>
 </p>
-<table class="table">
+<table class="table table-striped table-dark">
     <thead>
         <tr>
-            <th>
-                رقم الاشتراك
+            <th scope="col">
+                ID
             </th>
-            <th>
+            
+            <th scope="col">
                 هل يوجد صرف
             </th>
-            <th>
+            <th scope="col">
                 اخر قرأة للعداد
             </th>
-            <th>
+            <th scope="col">
                 عدد الوحدات
             </th>
-            <th>
-                نوع العقار
+            <th scope="col">
+                اسم نوع العقار 
             </th>
-            <th>
+            <th scope="col">
                 رقم المشترك
             </th>
-            <th>
+            <th scope="col">
                 اسم المشترك
             </th>
-            <th></th>
+            <th>
+                Actions
+            </th>
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
+    @foreach (var item in Model) {
         <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.NwcSubscriptionFileUnitNo)
+            <td scope="row">
+                @Html.DisplayFor(modelItem => item.NwcSubscriptionFileNo)
             </td>
-            <td>
+            <td scope="row">
                 @Html.DisplayFor(modelItem => item.NwcSubscriptionFileIsThereSanitation)
             </td>
-            <td>
+            <td scope="row">
                 @Html.DisplayFor(modelItem => item.NwcSubscriptionFileLastReadingMeter)
             </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.NwcSubscriptionFileReasons)
+            <td scope="row">
+                @Html.DisplayFor(modelItem => item.NwcSubscriptionFileUnitNo)
             </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.NwcSubscriptionFileUnitNo)
-                </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.NwcSubscriptionFileRrealEstateTypesCodeNavigation.NwcRrealEstateTypesCode)
+            
+            <td scope="row">
+                @Html.DisplayFor(modelItem => item.NwcSubscriptionFileRrealEstateTypesCodeNavigation.NwcRrealEstateTypesName)
             </td>
-            <td>
+            <td scope="row">
                 @Html.DisplayFor(modelItem => item.NwcSubscriptionFileSubscriberCodeNavigation.NwcSubscriberFileId)
             </td>
-            <td>
+            <td scope="row">
                 @Html.DisplayFor(modelItem => item.NwcSubscriptionFileSubscriberCodeNavigation.NwcSubscriberFileName)
             </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.NwcSubscriptionFileNo">Edit</a> |
-                <a asp-action="Delete" asp-route-id="@item.NwcSubscriptionFileNo">Delete</a>
+                <td scope="row">
+                <a asp-action="Edit" class="btn btn-primary" asp-route-id="@item.NwcSubscriptionFileNo">Edit</a> |
+                    <a asp-action="Delete" class="btn btn-danger" asp-route-id="@item.NwcSubscriptionFileNo">Delete</a>
             </td>
         </tr>
 }
