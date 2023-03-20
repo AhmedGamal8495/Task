@@ -18,7 +18,6 @@ namespace Task.Controllers
             _context = context;
         }
 
-        // GET: Subscriber
         public async Task<IActionResult> Index()
         {
               return _context.NwcSubscriberFiles != null ? 
@@ -26,7 +25,7 @@ namespace Task.Controllers
                           Problem("Entity set 'NwcContext.NwcSubscriberFiles'  is null.");
         }
 
-        // GET: Subscriber/Details/5
+        
         public async Task<IActionResult> Details(string id)
         {
             if (id == null || _context.NwcSubscriberFiles == null)
@@ -44,15 +43,12 @@ namespace Task.Controllers
             return View(nwcSubscriberFile);
         }
 
-        // GET: Subscriber/Create
         public IActionResult Create()
         {
             return View();
         }
 
-        // POST: Subscriber/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+        
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("NwcSubscriberFileId,NwcSubscriberFileName,NwcSubscriberFileCity,NwcSubscriberFileArea,NwcSubscriberFileMobile,NwcSubscriberFileReasons")] NwcSubscriberFile nwcSubscriberFile)
@@ -66,7 +62,6 @@ namespace Task.Controllers
             return View(nwcSubscriberFile);
         }
 
-        // GET: Subscriber/Edit/5
         public async Task<IActionResult> Edit(string id)
         {
             if (id == null || _context.NwcSubscriberFiles == null)
@@ -82,9 +77,7 @@ namespace Task.Controllers
             return View(nwcSubscriberFile);
         }
 
-        // POST: Subscriber/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+        
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(string id, [Bind("NwcSubscriberFileId,NwcSubscriberFileName,NwcSubscriberFileCity,NwcSubscriberFileArea,NwcSubscriberFileMobile,NwcSubscriberFileReasons")] NwcSubscriberFile nwcSubscriberFile)

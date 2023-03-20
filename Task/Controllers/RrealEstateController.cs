@@ -18,7 +18,6 @@ namespace Task.Controllers
             _context = context;
         }
 
-        // GET: RrealEstate
         public async Task<IActionResult> Index()
         {
               return _context.NwcRrealEstateTypes != null ? 
@@ -26,7 +25,6 @@ namespace Task.Controllers
                           Problem("Entity set 'NwcContext.NwcRrealEstateTypes'  is null.");
         }
 
-        // GET: RrealEstate/Create
         public IActionResult Create()
         {
             return View();
@@ -47,7 +45,6 @@ namespace Task.Controllers
         }
 
 
-        // GET: RrealEstate/Edit/5
         public async Task<IActionResult> Edit(string id)
         {
             if (id == null || _context.NwcRrealEstateTypes == null)
@@ -96,7 +93,6 @@ namespace Task.Controllers
             return View(nwcRrealEstateType);
         }
 
-        // GET: RrealEstate/Delete/id
         public async Task<IActionResult> Delete(string id)
         {
             if (id == null || _context.NwcRrealEstateTypes == null)
@@ -114,7 +110,6 @@ namespace Task.Controllers
             return View(nwcRrealEstateType);
         }
 
-        // POST: RrealEstate/Delete/id
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(string id)

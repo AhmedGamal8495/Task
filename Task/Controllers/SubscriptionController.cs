@@ -18,7 +18,6 @@ namespace Task.Controllers
             _context = context;
         }
 
-        // GET: Subscription
         public async Task<IActionResult> Index()
         {
             var nwcContext = _context.NwcSubscriptionFiles.Include(n => n.NwcSubscriptionFileRrealEstateTypesCodeNavigation).Include(n => n.NwcSubscriptionFileSubscriberCodeNavigation);
@@ -26,7 +25,6 @@ namespace Task.Controllers
         }
 
        
-        // GET: Subscription/Create
         public IActionResult Create()
         {
             ViewData["NwcSubscriptionFileRrealEstateTypesCode"] = new SelectList(_context.NwcRrealEstateTypes, "NwcRrealEstateTypesCode", "NwcRrealEstateTypesCode");
@@ -34,9 +32,7 @@ namespace Task.Controllers
             return View();
         }
 
-        // POST: Subscription/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+        
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("NwcSubscriptionFileNo,NwcSubscriptionFileSubscriberCode,NwcSubscriptionFileRrealEstateTypesCode,NwcSubscriptionFileUnitNo,NwcSubscriptionFileIsThereSanitation,NwcSubscriptionFileLastReadingMeter,NwcSubscriptionFileReasons")] NwcSubscriptionFile nwcSubscriptionFile)
@@ -49,7 +45,6 @@ namespace Task.Controllers
           
         }
 
-        // GET: Subscription/Edit/5
         public async Task<IActionResult> Edit(string id)
         {
             if (id == null || _context.NwcSubscriptionFiles == null)
@@ -67,9 +62,6 @@ namespace Task.Controllers
             return View(nwcSubscriptionFile);
         }
 
-        // POST: Subscription/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(string id, [Bind("NwcSubscriptionFileNo,NwcSubscriptionFileSubscriberCode,NwcSubscriptionFileRrealEstateTypesCode,NwcSubscriptionFileUnitNo,NwcSubscriptionFileIsThereSanitation,NwcSubscriptionFileLastReadingMeter,NwcSubscriptionFileReasons")] NwcSubscriptionFile nwcSubscriptionFile)
@@ -100,7 +92,6 @@ namespace Task.Controllers
             
         }
 
-        // GET: Subscription/Delete/5
         public async Task<IActionResult> Delete(string id)
         {
             if (id == null || _context.NwcSubscriptionFiles == null)
@@ -120,7 +111,6 @@ namespace Task.Controllers
             return View(nwcSubscriptionFile);
         }
 
-        // POST: Subscription/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(string id)
