@@ -49,7 +49,7 @@ namespace Task.Controllers
         
         public IActionResult Create()
         {
-            ViewData["NwcInvoicesRrealEstateTypes"] = new SelectList(_context.NwcRrealEstateTypes, "NwcRrealEstateTypesCode", "NwcRrealEstateTypesCode");
+            ViewData["NwcInvoicesRrealEstateTypes"] = new SelectList(_context.NwcRrealEstateTypes, "NwcRrealEstateTypesCode", "NwcRrealEstateTypesName");
             ViewData["NwcInvoicesSubscriberNo"] = new SelectList(_context.NwcSubscriberFiles, "NwcSubscriberFileId", "NwcSubscriberFileId");
             ViewData["NwcInvoicesSubscriptionNo"] = new SelectList(_context.NwcSubscriptionFiles, "NwcSubscriptionFileNo", "NwcSubscriptionFileNo");
             
@@ -60,18 +60,32 @@ namespace Task.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("NwcInvoicesNo,NwcInvoicesYear,NwcInvoicesRrealEstateTypes,NwcInvoicesSubscriptionNo,NwcInvoicesSubscriberNo,NwcInvoicesDate,NwcInvoicesFrom,NwcInvoicesTo,NwcInvoicesPreviousConsumptionAmount,NwcInvoicesCurrentConsumptionAmount,NwcInvoicesAmountConsumption,NwcInvoicesServiceFee,NwcInvoicesTaxRate,NwcInvoicesIsThereSanitation,NwcInvoicesConsumptionValue,NwcInvoicesWastewaterConsumptionValue,NwcInvoicesTotalInvoice,NwcInvoicesTaxValue,NwcInvoicesTotalBill,NwcInvoicesTotalReasons")] NwcInvoice nwcInvoice)
+        
         {
 
             nwcInvoice.NwcInvoicesTo = DateTime.Now;
             nwcInvoice.NwcInvoicesYear = DateTime.Now.ToString("yyy");
 
-            //nwcInvoice.NwcInvoicesPreviousConsumptionAmount = await _context.NwcSubscriptionFiles.FindAsync(nwcInvoice.NwcInvoicesSubscriptionNoNavigation.NwcSubscriptionFileLastReadingMeter);
-            //nwcInvoice.NwcInvoicesAmountConsumption = nwcInvoice.NwcInvoicesCurrentConsumptionAmount - nwcInvoice.NwcInvoicesPreviousConsumptionAmount;
-            //nwcInvoice.NwcInvoicesSubscriberNo = nwcInvoice.NwcInvoicesSubscriptionNoNavigation.NwcSubscriptionFileSubscriberCode.ToString();
+            NwcSubscriptionFile sub = new NwcSubscriptionFile();
+            if (nwcInvoice.NwcInvoicesSubscriptionNo != null)
+            {
+                
+                sub = await _context.NwcSubscriptionFiles.FindAsync(nwcInvoice.NwcInvoicesSubscriptionNo);
+                nwcInvoice.NwcInvoicesSubscriberNo = sub.NwcSubscriptionFileSubscriberCode;
+                nwcInvoice.NwcInvoicesIsThereSanitation = sub.NwcSubscriptionFileIsThereSanitation;
+                nwcInvoice.NwcInvoicesPreviousConsumptionAmount = sub.NwcSubscriptionFileLastReadingMeter;
+                nwcInvoice.NwcInvoicesRrealEstateTypes = sub.NwcSubscriptionFileRrealEstateTypesCode;
+            }
+
+            if (nwcInvoice.NwcInvoicesCurrentConsumptionAmount > nwcInvoice.NwcInvoicesPreviousConsumptionAmount)
+            {
+                nwcInvoice.NwcInvoicesAmountConsumption = nwcInvoice.NwcInvoicesCurrentConsumptionAmount - nwcInvoice.NwcInvoicesPreviousConsumptionAmount;
+            }
 
             if (nwcInvoice.NwcInvoicesAmountConsumption < 16)
             {
-                nwcInvoice.NwcInvoicesTotalInvoice = nwcInvoice.NwcInvoicesAmountConsumption * nwcInvoice.NwcInvoicesSubscriptionNoNavigation.NwcSubscriptionFileUnitNo * (decimal)0.1;
+                
+                nwcInvoice.NwcInvoicesTotalInvoice = (nwcInvoice.NwcInvoicesAmountConsumption) * sub.NwcSubscriptionFileUnitNo * (decimal)0.1;
                 if (nwcInvoice.NwcInvoicesIsThereSanitation == true)
                 {
                     nwcInvoice.NwcInvoicesTotalBill = nwcInvoice.NwcInvoicesTotalInvoice + (nwcInvoice.NwcInvoicesTotalInvoice / 2);
@@ -83,7 +97,7 @@ namespace Task.Controllers
             }
             if (nwcInvoice.NwcInvoicesAmountConsumption > 16 && nwcInvoice.NwcInvoicesAmountConsumption <= 30)
             {
-                nwcInvoice.NwcInvoicesTotalInvoice = nwcInvoice.NwcInvoicesAmountConsumption * nwcInvoice.NwcInvoicesSubscriptionNoNavigation.NwcSubscriptionFileUnitNo * (decimal)1.0;
+                nwcInvoice.NwcInvoicesTotalInvoice = nwcInvoice.NwcInvoicesAmountConsumption * sub.NwcSubscriptionFileUnitNo * (decimal)1.0;
                 if (nwcInvoice.NwcInvoicesIsThereSanitation == true)
                 {
                     nwcInvoice.NwcInvoicesTotalBill = nwcInvoice.NwcInvoicesTotalInvoice + (decimal)0.5;
@@ -95,7 +109,7 @@ namespace Task.Controllers
             }
             if (nwcInvoice.NwcInvoicesAmountConsumption > 31 && nwcInvoice.NwcInvoicesAmountConsumption <= 45)
             {
-                nwcInvoice.NwcInvoicesTotalInvoice = nwcInvoice.NwcInvoicesAmountConsumption * nwcInvoice.NwcInvoicesSubscriptionNoNavigation.NwcSubscriptionFileUnitNo * (decimal)3.0;
+                nwcInvoice.NwcInvoicesTotalInvoice = nwcInvoice.NwcInvoicesAmountConsumption * sub.NwcSubscriptionFileUnitNo * (decimal)3.0;
                 if (nwcInvoice.NwcInvoicesIsThereSanitation == true)
                 {
                     nwcInvoice.NwcInvoicesTotalBill = nwcInvoice.NwcInvoicesTotalInvoice + (decimal)1.5;
@@ -107,7 +121,7 @@ namespace Task.Controllers
             }
             if (nwcInvoice.NwcInvoicesAmountConsumption > 46 && nwcInvoice.NwcInvoicesAmountConsumption <= 60)
             {
-                nwcInvoice.NwcInvoicesTotalInvoice = nwcInvoice.NwcInvoicesAmountConsumption * nwcInvoice.NwcInvoicesSubscriptionNoNavigation.NwcSubscriptionFileUnitNo * (decimal)4.0;
+                nwcInvoice.NwcInvoicesTotalInvoice = nwcInvoice.NwcInvoicesAmountConsumption * sub.NwcSubscriptionFileUnitNo * (decimal)4.0;
                 if (nwcInvoice.NwcInvoicesIsThereSanitation == true)
                 {
                     nwcInvoice.NwcInvoicesTotalBill = nwcInvoice.NwcInvoicesTotalInvoice + (decimal)2.0;
@@ -119,7 +133,7 @@ namespace Task.Controllers
             }
             if (nwcInvoice.NwcInvoicesAmountConsumption > 60)
             {
-                nwcInvoice.NwcInvoicesTotalInvoice = nwcInvoice.NwcInvoicesAmountConsumption * nwcInvoice.NwcInvoicesSubscriptionNoNavigation.NwcSubscriptionFileUnitNo * (decimal)6.0;
+                nwcInvoice.NwcInvoicesTotalInvoice = nwcInvoice.NwcInvoicesAmountConsumption * sub.NwcSubscriptionFileUnitNo * (decimal)6.0;
                 if (nwcInvoice.NwcInvoicesIsThereSanitation == true)
                 {
                     nwcInvoice.NwcInvoicesTotalBill = nwcInvoice.NwcInvoicesTotalInvoice + (decimal)3.0;

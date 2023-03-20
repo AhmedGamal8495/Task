@@ -29,43 +29,19 @@
                 <span asp-validation-for="NwcInvoicesFrom" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="NwcInvoicesTo" class="control-label">الى تاريخ</label>
-                <input asp-for="NwcInvoicesTo" class="form-control" />
-                <span asp-validation-for="NwcInvoicesTo" class="text-danger"></span>
-            </div>
-            <div class="form-group">
                 <label asp-for="NwcInvoicesSubscriptionNo" class="control-label"> رقم الاشتراك</label>
                 <select asp-for="NwcInvoicesSubscriptionNo" class ="form-control" asp-items="ViewBag.NwcInvoicesSubscriptionNo"></select>
             </div>
-            <div class="form-group">
-                <label asp-for="NwcInvoicesSubscriberNo" class="control-label">هوية المشترك</label>
-                <select asp-for="NwcInvoicesSubscriberNo" class="form-control" asp-items="ViewBag.NwcInvoicesSubscriberNo"></select>
-            </div>
             
-
-
-            <div class="form-group">
-                <label asp-for="NwcInvoicesPreviousConsumptionAmount" class="control-label">القراة السابقه</label>
-                <input asp-for="NwcInvoicesPreviousConsumptionAmount" class="form-control" />
-                <span asp-validation-for="NwcInvoicesPreviousConsumptionAmount" class="text-danger"></span>
-            </div>
+            
+            
             <div class="form-group" >
                 <label asp-for="NwcInvoicesCurrentConsumptionAmount" class="control-label">القراة الحاليه</label>
                 <input asp-for="NwcInvoicesCurrentConsumptionAmount"  class="form-control" />
                 <span asp-validation-for="NwcInvoicesCurrentConsumptionAmount" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <label asp-for="NwcInvoicesAmountConsumption" class="control-label">كمية الاستهلاك</label>
-                <input asp-for="NwcInvoicesAmountConsumption" readonly="readonly" class="form-control" />
-                <span asp-validation-for="NwcInvoicesAmountConsumption" class="text-danger"></span>
-            </div>
+            
 
-            <div class="form-group form-check">
-                <label class="form-check-label">
-                    <input class="form-check-input" asp-for="NwcInvoicesIsThereSanitation" />
-                    متوفر صرف صحي
-                </label>
-            </div>
             <div class="form-group">
                 <label asp-for="NwcInvoicesServiceFee" class="control-label">رسوم الخدمه</label>
                 <input asp-for="NwcInvoicesServiceFee" class="form-control" />
@@ -75,15 +51,10 @@
                 <label asp-for="NwcInvoicesTaxRate" class="control-label">نسبة الضريبه</label>
                 <input asp-for="NwcInvoicesTaxRate" class="form-control" />
                 <span asp-validation-for="NwcInvoicesTaxRate" class="text-danger"></span>
-            </div>
+            </div> 
             
-            <div class="form-group">
-                <label asp-for="NwcInvoicesRrealEstateTypes" class="control-label">نوع العقار</label>
-                <select asp-for="NwcInvoicesRrealEstateTypes" class="form-control" asp-items="ViewBag.NwcInvoicesRrealEstateTypes"></select>
-            </div>
 
-            
-            
+
             <div class="form-group">
                 <label asp-for="NwcInvoicesConsumptionValue" class="control-label">قيمة استهلاك المياه</label>
                 <input asp-for="NwcInvoicesConsumptionValue" class="form-control" />
@@ -109,7 +80,11 @@
             
 
 
-            
+            <div class="form-group">
+                <label asp-for="NwcInvoicesTotalReasons" class="control-label">ملاحظات</label>
+                <input asp-for="NwcInvoicesTotalReasons" class="form-control" />
+                <span asp-validation-for="NwcInvoicesTotalReasons" class="text-danger"></span>
+            </div>
             
 
 
